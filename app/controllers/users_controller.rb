@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # POST /users
   def create
     user_creation_result = User.create_with_free_pseudo(user_params[:pseudo])
-    render json: user_creation_result, status: user_creation_result[:success] ? 201 : 500
+    render json: user_creation_result, status: user_creation_result[:success] ? :created : :internal_server_error
   end
 
   private
